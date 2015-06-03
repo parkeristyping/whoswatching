@@ -18,7 +18,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-    var dispatcher = new WebSocketRails('localhost:3000/websocket');
+    var dispatcher = new WebSocketRails('www.pure-dawn-3745.herokuapp.com/websocket');
     dispatcher.on_open = function(data) {
         console.log('Connection has been established: ', data);
         dispatcher.trigger('hello', 'Hello, there!');
