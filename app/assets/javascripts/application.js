@@ -24,7 +24,8 @@ $(document).ready(function(){
         dispatcher.trigger('hello', 'Hello, there!');
     }
 
-    dispatcher.bind('update', function(count) {
+    var channel = dispatcher.subscribe('updates');
+    channel.bind('update', function(count) {
         $('#count').text(count);
     });
 });
