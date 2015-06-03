@@ -1,2 +1,15 @@
 <h1 id="count">0</h1>
 <h1>people are watching</h1>
+<script>
+ $(document).ready(function(){
+     var dispatcher = new WebSocketRails('www.pure-dawn-3745.herokuapp.com/websocket');
+     dispatcher.on_open = function(data) {
+         console.log('Connection has been established: ', data);
+         dispatcher.trigger('hello', 'Hello, there!');
+     }
+
+     dispatcher.bind('update', function(count) {
+         $('#count').text(count);
+     });
+ });
+</script>
