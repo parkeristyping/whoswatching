@@ -6,7 +6,7 @@ class CounterController < WebsocketRails::BaseController
   end
 
   def goodbye
-    @count = Viewer.decrement_counter(:count,1)
+    Viewer.decrement_counter(:count,1)
     @count = Viewer.first.count
     send_message :update, @count
   end
