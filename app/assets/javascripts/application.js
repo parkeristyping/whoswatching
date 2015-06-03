@@ -16,3 +16,15 @@
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require websocket_rails/main
 //= require_tree .
+
+$(document).ready(function(){
+    var dispatcher = new WebSocketRails('pure-dawn-3745.herokuapp.com/websocket');
+    dispatcher.on_open = function(data) {
+        console.log('Connection has been established: ', data);
+        dispatcher.trigger('hello', 'Hello, there!');
+    }
+
+    dispatcher.bind('update', function(count) {
+        $('#count').text(count);
+    });
+});
